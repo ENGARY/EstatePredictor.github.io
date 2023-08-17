@@ -23,7 +23,7 @@ def predict_price(location,BHK,Parking,Area,Type,Transaction):
     X[2]=Parking
     return model.predict([X])[0]
 
-st.title("Real Estate Predictor for Delhi")
+st.title("Real Estate Price Predictor for Delhi")
 nav = st.sidebar.radio("Navigation",["Home","Prediction"])
 if nav=="Home":
     img = Image.open("real.jpg")
@@ -48,7 +48,6 @@ if nav=="Prediction":
     area = st.number_input("Enter Area in Square Ft.", min_value=50, max_value=25000)
     type =st.radio("Type of Flat",["Apartment","Builder_Floor"])
     trans = st.radio("Type of Transaction",["Resale","New_Property"])
-    st.write(BHK,loc,parking,type,trans)
     if st.button("Predict"):
         price = predict_price(loc,BHK,parking,area,type,trans)
         st.write("## Rs. ",price )
