@@ -3,10 +3,10 @@ from PIL import Image
 import pandas as pd
 import joblib
 import numpy as np
-data1 = pd.read_csv("C:/Users/aryan/OneDrive/Desktop/index1/Delhi House.csv")
-data2= pd.read_csv("C:/Users/aryan/OneDrive/Desktop/index1/processed_data.csv")
-x = pd.read_csv("C:/Users/aryan/OneDrive/Desktop/index1/x.csv")
-model = joblib.load("C:/Users/aryan/OneDrive/Desktop/index1/DecisionTreeReg.pkl")
+data1 = pd.read_csv("Delhi House.csv")
+data2= pd.read_csv("processed_data.csv")
+x = pd.read_csv("x.csv")
+model = joblib.load("DecisionTreeReg.pkl")
 def predict_price(location,BHK,Parking,Area,Type,Transaction):
     type_index = np.where(x.columns==Type)[0][0]
     loc_index = np.where(x.columns==location)[0][0]
@@ -26,7 +26,7 @@ def predict_price(location,BHK,Parking,Area,Type,Transaction):
 st.title("Real Estate Predictor for Delhi")
 nav = st.sidebar.radio("Navigation",["Home","Prediction"])
 if nav=="Home":
-    img = Image.open("C:/Users/aryan/OneDrive/Desktop/index1/real.jpg")
+    img = Image.open("real.jpg")
     st.image(img, width=800)
     if st.checkbox("Show Dataframe Used to Train the Model"):
         st.dataframe(data1)
